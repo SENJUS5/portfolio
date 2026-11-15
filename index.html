@@ -151,21 +151,22 @@ h2{font-family:var(--head);font-weight:700;font-size:clamp(38px,5vw,56px);letter
 
 /* PROJECTS */
 .projects{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
-.pc{background:var(--bg2);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .35s}
-.pc:hover{transform:translateY(-8px);border-color:rgba(255,122,61,.55);box-shadow:0 30px 60px -30px rgba(0,0,0,.9)}
+.pc{--card-acc:var(--acc);--card-pop:var(--card-acc);--card-vis:#0f0e0d;background:var(--bg2);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .35s}
+.pc:hover{transform:translateY(-8px);border-color:color-mix(in srgb,var(--card-acc) 55%,transparent);box-shadow:0 30px 60px -30px rgba(0,0,0,.9),0 0 40px -14px color-mix(in srgb,var(--card-acc) 60%,transparent)}
 .pc.wide{grid-column:span 2;flex-direction:row}
-.pc.wide .vis{flex:1.1;border-bottom:none;border-right:1px solid var(--line)}
+.pc.wide .vis{flex:1.1;border-bottom:none;border-right:1px solid var(--line);height:auto;display:flex;flex-direction:column}
+.pc.wide .vis>.term,.pc.wide .vis>.dash{margin:auto 0}
 .pc.wide .body{flex:1}
-.vis{height:240px;background:#0f0e0d;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.vis{--acc:var(--card-pop);--acc-soft:color-mix(in srgb,var(--card-pop) 12%,transparent);height:240px;background:var(--card-vis);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
 .bar3{display:flex;gap:7px;padding:12px 14px;border-bottom:1px solid var(--line);align-items:center}
 .bar3 i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.bar3 i:nth-child(2){background:#febc2e}.bar3 i:nth-child(3){background:#28c840}
 .bar3 span{flex:1;text-align:center;font-family:var(--mono);font-size:11px;color:var(--dim)}
 .body{padding:32px;display:flex;flex-direction:column;flex:1}
-.kind{font-family:var(--mono);font-size:12px;color:var(--acc);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+.kind{font-family:var(--mono);font-size:12px;color:var(--card-acc,var(--acc));letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
 .pc h3{font-family:var(--head);font-size:23px;font-weight:700;margin-bottom:12px;line-height:1.3}
 .pc p{color:var(--muted);font-size:15.5px;flex:1}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px}
-.chips span{font-family:var(--mono);font-size:12px;color:var(--acc);background:var(--acc-soft);border:1px solid rgba(255,122,61,.25);padding:4px 10px;border-radius:6px}
+.chips span{font-family:var(--mono);font-size:12px;color:var(--card-acc,var(--acc));background:color-mix(in srgb,var(--card-acc,var(--acc)) 12%,transparent);border:1px solid color-mix(in srgb,var(--card-acc,var(--acc)) 25%,transparent);padding:4px 10px;border-radius:6px}
 
 .cta-case{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:var(--acc);color:#131211;border:none;border-radius:99px;padding:7px 7px 7px 24px;font-family:var(--head);font-weight:700;font-size:16px;transition:transform .25s,box-shadow .25s}
 .cta-case::before{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:shine 3.4s ease-in-out infinite}
@@ -176,8 +177,8 @@ h2{font-family:var(--head);font-weight:700;font-size:clamp(38px,5vw,56px);letter
 .cta-case.git .circ svg{width:20px;height:20px;fill:var(--acc)}
 .cta-case.git:hover .circ{transform:scale(1.1)}
 
-.term{padding:18px 20px;font-family:var(--mono);font-size:12.5px;line-height:1.9;color:#bdb6ab}
-.term .g{color:#6ee7a0}.term .o{color:var(--acc)}.term .d{color:var(--dim)}
+.term{padding:18px 20px;font-family:var(--mono);font-size:12.5px;line-height:1.9;color:var(--term-ink,#bdb6ab)}
+.term .g{color:var(--term-ok,#6ee7a0)}.term .o{color:var(--acc)}.term .d{color:var(--dim)}
 .term .ln{opacity:0;transform:translateX(-6px);transition:all .4s}
 .pc.in .term .ln{opacity:1;transform:none}
 .phone-scene{display:flex;align-items:center;justify-content:center;height:100%;gap:22px}
@@ -199,10 +200,10 @@ h2{font-family:var(--head);font-weight:700;font-size:clamp(38px,5vw,56px);letter
 .doc .row span{flex:1;font-family:var(--mono);font-size:10px;text-align:center;padding:6px 0;border-radius:6px;background:var(--bg3);color:var(--muted)}
 .doc .row span.on{background:var(--acc-soft);color:var(--acc)}
 .pc-acts{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
-.pc .note{font-family:var(--mono);font-size:11.5px;color:var(--dim);margin:-6px 0 14px}
+.pc .note{font-family:var(--mono);font-size:11.5px;color:#8a8379;margin:-6px 0 14px}
 .dash{padding:20px 22px;transition:transform .5s}
 .pc:hover .dash{transform:translateY(-6px)}
-.dash .alert{display:flex;align-items:center;gap:10px;background:var(--acc-soft);border:1px solid rgba(255,122,61,.35);border-radius:10px;padding:10px 14px;font-family:var(--head);font-weight:600;font-size:14px;color:var(--ink);margin-bottom:18px}
+.dash .alert{display:flex;align-items:center;gap:10px;background:var(--acc-soft);border:1px solid color-mix(in srgb,var(--acc) 35%,transparent);border-radius:10px;padding:10px 14px;font-family:var(--head);font-weight:600;font-size:14px;color:var(--ink);margin-bottom:18px}
 .dash .alert b{width:22px;height:22px;border-radius:50%;background:var(--acc);color:#131211;display:grid;place-items:center;font-size:12px}
 .dash .alert span{margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--acc)}
 .dash .mk{margin-bottom:14px}
@@ -213,6 +214,20 @@ h2{font-family:var(--head);font-weight:700;font-size:clamp(38px,5vw,56px);letter
 .dash .tr i{display:block;height:100%;width:0;border-radius:3px;background:var(--acc);transition:width 1.2s cubic-bezier(.2,.7,.2,1) .3s}
 .dash .tr i.ok{background:var(--ok)}
 .pc.in .dash .tr i{width:var(--w)}
+
+/* PROJECT CARD ACCENTS: each card's colours live here. Buttons always stay site orange.
+   --card-acc: label, chips, hover glow (readable on the dark card)
+   --card-vis: preview background · --card-pop: accent inside the preview */
+.pc-grit{--card-acc:#ef6a6f;--card-vis:#1e0404;--card-pop:#f37d81}
+.pc-grit .vis>*{--line:#4d2b28;--dim:#a8938f}
+.pc-zepto{--card-acc:#bf86ec;--card-vis:#380848;--card-pop:#e45bef}
+.pc-zepto .vis>*{--bg2:#24062f;--bg3:#3d1052;--line2:#5e2a7a}
+.pc-wellfound{--card-acc:#ff5236;--card-vis:#051316;--card-pop:#c92600}
+.pc-wellfound .doc{--bg2:#fff;--bg3:#f5f4f5;--line:#e7e4e7;--line2:#d8d4d8;--muted:#535353}
+.pc-rag{--card-acc:#d97757;--card-vis:#f5f0e8;--card-pop:#a94b2a}
+.pc-rag .vis>*{--line:#e2dacb;--dim:#6b665b;--term-ink:#29261b;--term-ok:#25744a}
+.pc-xeliport{--card-acc:#60a5fa;--card-vis:#0f1a33;--card-pop:#5294f8}
+.pc-xeliport .vis>*{--dim:#8a96ad;--ok:#10b981}
 
 /* EDUCATION */
 .edu{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
@@ -414,7 +429,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-siz
   <div class="wrap">
     <div class="rv"><div class="num">04</div><h2>Projects</h2></div>
     <div class="projects">
-      <article class="pc wide rv">
+      <article class="pc wide rv pc-grit">
         <div class="vis">
           <div class="bar3"><i></i><i></i><i></i><span>grit — student view</span></div>
           <div class="term">
@@ -438,7 +453,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-siz
         </div>
       </article>
 
-      <article class="pc rv">
+      <article class="pc rv pc-zepto">
         <div class="vis">
           <div class="phone-scene">
             <div class="phone">
@@ -460,7 +475,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-siz
         </div>
       </article>
 
-      <article class="pc rv d1">
+      <article class="pc rv d1 pc-wellfound">
         <div class="vis">
           <div class="doc">
             <h6>PROBLEM STATEMENT</h6>
@@ -478,7 +493,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-siz
         </div>
       </article>
 
-      <article class="pc wide rv">
+      <article class="pc wide rv pc-rag">
         <div class="vis">
           <div class="bar3"><i></i><i></i><i></i><span>multimodal-rag — query</span></div>
           <div class="term">
@@ -501,7 +516,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--dim);font-siz
         </div>
       </article>
 
-      <article class="pc wide rv">
+      <article class="pc wide rv pc-xeliport">
         <div class="vis">
           <div class="bar3"><i></i><i></i><i></i><span>xeliport — founder view</span></div>
           <div class="dash">
